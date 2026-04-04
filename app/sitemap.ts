@@ -75,5 +75,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  return [...staticPages, ...blogPosts];
+  const locationPages: MetadataRoute.Sitemap = [
+    "harrisburg", "hershey", "mechanicsburg", "carlisle", "york",
+    "lancaster", "lebanon", "reading", "allentown", "chambersburg",
+    "gettysburg", "shippensburg", "middletown", "hummelstown", "dillsburg",
+  ].map((city) => ({
+    url: `${baseUrl}/locations/${city}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...blogPosts, ...locationPages];
 }
